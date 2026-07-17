@@ -22,11 +22,8 @@ pipeline {
         stage('Check Python') {
             steps {
                 bat '''
-                echo USERNAME=%USERNAME%
-                where python
-                python --version
-                where py
-                py --version
+                dir "C:\\Users\\tajhassan\\AppData\\Local\\Programs\\Python\\Python314"
+                "C:\\Users\\tajhassan\\AppData\\Local\\Programs\\Python\\Python314\\python.exe" --version
                 '''
             }
         }
