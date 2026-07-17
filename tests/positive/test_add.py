@@ -1,5 +1,6 @@
 """
-    This test case is desige for performing addition operation
+    This test case is design for performing addition operation
+    and assert response body
 """
 import pytest
 

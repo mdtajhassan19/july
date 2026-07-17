@@ -3,10 +3,8 @@ pipeline {
     agent any
 
     environment {
-
-        PYTHON = "python"
-        VENV = "venv"
-
+    PYTHON = 'C:\\Users\\tajhassan\\AppData\\Local\\Programs\\Python\\Python314\\python.exe'
+    VENV = 'venv'
     }
 
     stages {
@@ -19,6 +17,15 @@ pipeline {
 
             }
 
+        }
+
+        stage('Check Python') {
+            steps {
+                bat '''
+                dir "C:\\Users\\tajhassan\\AppData\\Local\\Programs\\Python\\Python314"
+                "C:\\Users\\tajhassan\\AppData\\Local\\Programs\\Python\\Python314\\python.exe" --version
+                '''
+            }
         }
 
         stage('Create Virtual Environment') {
@@ -35,9 +42,8 @@ pipeline {
             steps {
 
                 bat """
-                call %VENV%\\Scripts\\activate
-                pip install --upgrade pip
-                pip install -r requirements.txt
+                %VENV%\\Scripts\\python.exe -m pip install --upgrade pip
+                %VENV%\\Scripts\\python.exe -m pip install -r requirements.txt
                 """
             }
 
@@ -57,13 +63,30 @@ pipeline {
 
         }
 
+        // stage('Run Automation') {
+
+        //     steps {
+
+        //         bat """
+        //             %VENV%\\Scripts\\python.exe -m pytest tests -v ^
+        //             --html=reports/report.html ^
+        //             --self-contained-html ^
+        //             --alluredir=allure-results ^
+        //             --junitxml=reports/junit.xml
+        //         """
+        //     }
+
+        // }
+
         stage('Run Automation') {
 
             steps {
 
                 bat """
-                call %VENV%\\Scripts\\activate
-                pytest tests -v --html=reports/report.html --self-contained-html --alluredir=allure-results
+                    %VENV%\\Scripts\\python.exe -m pytest tests -v ^
+                    --html=reports/report.html ^
+                    --self-contained-html ^
+                    --alluredir=allure-results
                 """
             }
 
@@ -99,11 +122,10 @@ pipeline {
 
     post {
 
-        always {
-
-            junit '**/junit.xml'
-
-        }
+        // always {
+        //     junit allowEmptyResults: true,
+        //       testResults: 'reports/junit.xml'
+        // }
 
         success {
 
