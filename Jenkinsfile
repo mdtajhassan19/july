@@ -85,7 +85,8 @@ pipeline {
                 bat """
                     %VENV%\\Scripts\\python.exe -m pytest tests -v ^
                     --html=reports/report.html ^
-                    --self-contained-html
+                    --self-contained-html ^
+                    --alluredir=allure-results
                 """
             }
 
