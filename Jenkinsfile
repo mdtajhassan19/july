@@ -21,6 +21,18 @@ pipeline {
 
         }
 
+        stage('Check Python') {
+            steps {
+                bat '''
+                echo USERNAME=%USERNAME%
+                where python
+                python --version
+                where py
+                py --version
+                '''
+            }
+        }
+
         stage('Create Virtual Environment') {
 
             steps {
