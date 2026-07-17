@@ -3,10 +3,8 @@ pipeline {
     agent any
 
     environment {
-
-        PYTHON = "python"
-        VENV = "venv"
-
+    PYTHON = 'C:\\Users\\tajhassan\\AppData\\Local\\Programs\\Python\\Python314\\python.exe'
+    VENV = 'venv'
     }
 
     stages {
