@@ -63,6 +63,21 @@ pipeline {
 
         }
 
+        // stage('Run Automation') {
+
+        //     steps {
+
+        //         bat """
+        //             %VENV%\\Scripts\\python.exe -m pytest tests -v ^
+        //             --html=reports/report.html ^
+        //             --self-contained-html ^
+        //             --alluredir=allure-results ^
+        //             --junitxml=reports/junit.xml
+        //         """
+        //     }
+
+        // }
+
         stage('Run Automation') {
 
             steps {
@@ -70,10 +85,8 @@ pipeline {
                 bat """
                     %VENV%\\Scripts\\python.exe -m pytest tests -v ^
                     --html=reports/report.html ^
-                    --self-contained-html ^
-                    --alluredir=allure-results ^
-                    --junitxml=reports/junit.xml
-"""
+                    --self-contained-html
+                """
             }
 
         }
@@ -91,27 +104,27 @@ pipeline {
 
         }
 
-        stage('Publish Allure') {
+        // stage('Publish Allure') {
 
-            steps {
+        //     steps {
 
-                allure([
-                        includeProperties: false,
-                        results: [[path: 'allure-results']]
-                ])
+        //         allure([
+        //                 includeProperties: false,
+        //                 results: [[path: 'allure-results']]
+        //         ])
 
-            }
+        //     }
 
-        }
+        // }
 
     }
 
     post {
 
-        always {
-            junit allowEmptyResults: true,
-              testResults: 'reports/junit.xml'
-        }
+        // always {
+        //     junit allowEmptyResults: true,
+        //       testResults: 'reports/junit.xml'
+        // }
 
         success {
 
