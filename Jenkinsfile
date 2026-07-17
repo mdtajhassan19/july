@@ -68,9 +68,12 @@ pipeline {
             steps {
 
                 bat """
-                call %VENV%\\Scripts\\activate
-                pytest tests -v --html=reports/report.html --self-contained-html --alluredir=allure-results
-                """
+                    %VENV%\\Scripts\\python.exe -m pytest tests -v ^
+                    --html=reports/report.html ^
+                    --self-contained-html ^
+                    --alluredir=allure-results ^
+                    --junitxml=reports/junit.xml
+"""
             }
 
         }
@@ -106,7 +109,7 @@ pipeline {
     post {
 
         always {
-        junit allowEmptyResults: true,
+            junit allowEmptyResults: true,
               testResults: 'reports/junit.xml'
         }
 
