@@ -1,0 +1,37 @@
+{
+    "add_id": 401,
+    "subtract_id": 402,
+    "multiply_id": 403,
+    "divide_id": 404,
+    "total_operations": 4,
+    "history": [
+        {
+            "id": 401,
+            "operation": "Addition",
+            "a": 10.0,
+            "b": 20.0,
+            "result": 30.0
+        },
+        {
+            "id": 402,
+            "operation": "Subtraction",
+            "a": 300.0,
+            "b": 200.0,
+            "result": 100.0
+        },
+        {
+            "id": 403,
+            "operation": "Multiplication",
+            "a": 5.0,
+            "b": 10.0,
+            "result": 50.0
+        },
+        {
+            "id": 404,
+            "operation": "Division",
+            "a": 50.0,
+            "b": 5.0,
+            "result": 10.0
+        }
+    ]
+}

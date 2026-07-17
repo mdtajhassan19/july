@@ -1,0 +1,154 @@
+{
+  "base_url": "http://127.0.0.1:8000",
+
+  "add": [
+    {
+      "endpoint": "/add",
+      "schema": "schemas/success/add_schema.json",
+      "request": {
+        "a": 10,
+        "b": 20
+      },
+      "expected": {
+        "status_code": 200,
+        "operation": "Addition",
+        "result": 30
+      }
+    },
+    {
+      "endpoint": "/add",
+      "schema": "schemas/success/add_schema.json",
+      "request": {
+        "a": 5,
+        "b": 15
+      },
+      "expected": {
+        "status_code": 200,
+        "operation": "Addition",
+        "result": 20
+      }
+    }
+  ],
+
+  "subtract": [
+    {
+      "endpoint": "/subtract",
+      "schema": "schemas/success/add_schema.json",
+      "request": {
+        "a": 300,
+        "b": 200
+      },
+      "expected": {
+        "status_code": 200,
+        "operation": "Subtraction",
+        "result": 100
+      }
+    }
+  ],
+
+  "multiply": [
+    {
+      "endpoint": "/multiply",
+      "schema": "schemas/success/add_schema.json",
+      "request": {
+        "a": 5,
+        "b": 10
+      },
+      "expected": {
+        "status_code": 200,
+        "operation": "Multiplication",
+        "result": 50
+      }
+    }
+  ],
+
+  "divide": [
+    {
+      "endpoint": "/divide",
+      "schema": "schemas/success/add_schema.json",
+      "request": {
+        "a": 50,
+        "b": 5
+      },
+      "expected": {
+        "status_code": 200,
+        "operation": "Division",
+        "result": 10
+      }
+    }
+  ],
+
+  "update": {
+      "endpoint": "/history/{id}",
+      "request": {
+        "a": 100,
+        "b": 50,
+        "operation": "multiply"
+      },
+      "expected": {
+        "status_code": 200,
+        "message": "Calculation updated successfully.",
+        "result": 5000
+      },
+      "schema": "schemas/success/update_schema.json"
+  },
+
+  "history": {
+      "endpoint": "/history",
+      "status_code": 200,
+      "schema": "schemas/success/history_schema.json",
+      "expected": {
+
+      }
+  },
+
+  "history_by_id": {
+      "endpoint": "/history/{id}",
+      "status_code": 200,
+      "schema": "schemas/success/history_by_id_schema.json",
+      "expected": {
+        
+      }
+  },
+    
+  "negative":{
+
+      "division_by_zero":{
+
+          "a":100,
+
+          "b":0,
+
+          "expected_status": 400,
+
+          "expected_message": "Division by zero is not allowed."
+        },
+
+        "invalid_operation":{
+
+            "a":20,
+
+            "b":10,
+
+            "operation":"power",
+
+            "expected_status": 400,
+
+            "expected_message": "Invalid operation."
+        },
+
+        "invalid_history": {
+            "id": 99999,
+            "expected_status": 404,
+            "expected_message": "Calculation not found."
+        },
+
+        "invalid_delete": {
+            "id": 99999,
+            "expected_status": 404,
+            "expected_message": "Calculation not found."
+        },
+
+        "invalid_id":999999
+    }
+}

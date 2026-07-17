@@ -1,0 +1,39 @@
+{
+  "type": "object",
+  "properties": {
+    "message": {
+      "type": "string"
+    },
+    "calculation": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer"
+        },
+        "operation": {
+          "type": "string"
+        },
+        "a": {
+          "type": "number"
+        },
+        "b": {
+          "type": "number"
+        },
+        "result": {
+          "type": "number"
+        }
+      },
+      "required": [
+        "id",
+        "operation",
+        "a",
+        "b",
+        "result"
+      ]
+    }
+  },
+  "required": [
+    "message",
+    "calculation"
+  ]
+}
