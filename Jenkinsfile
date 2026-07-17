@@ -105,18 +105,18 @@ pipeline {
 
         }
 
-        // stage('Publish Allure') {
+        stage('Publish Allure') {
 
-        //     steps {
+            steps {
 
-        //         allure([
-        //                 includeProperties: false,
-        //                 results: [[path: 'allure-results']]
-        //         ])
+                allure([
+                        includeProperties: false,
+                        results: [[path: 'allure-results']]
+                ])
 
-        //     }
+            }
 
-        // }
+        }
 
     }
 
